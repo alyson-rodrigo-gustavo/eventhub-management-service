@@ -3,7 +3,7 @@ package br.com.alysongustavo.eventhubmanagementservice.infra.adapters.outbound.p
 
 import br.com.alysongustavo.eventhubmanagementservice.application.user.port.out.UserRepositoryPort;
 import br.com.alysongustavo.eventhubmanagementservice.domain.user.model.User;
-import br.com.alysongustavo.eventhubmanagementservice.infra.adapters.outbound.persistence.jpa.mapper.UserMapper;
+import br.com.alysongustavo.eventhubmanagementservice.infra.adapters.outbound.persistence.jpa.mapper.UserJpaMapper;
 import br.com.alysongustavo.eventhubmanagementservice.infra.adapters.outbound.persistence.jpa.repository.UserJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -15,7 +15,7 @@ import java.util.Optional;
 public class UserRepositoryAdapter implements UserRepositoryPort {
 
     private final UserJpaRepository userRepository;
-    private final UserMapper userMapper;
+    private final UserJpaMapper userMapper;
 
     @Override
     public User save(User user) {

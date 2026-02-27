@@ -1,9 +1,9 @@
 package br.com.alysongustavo.eventhubmanagementservice.infra.config;
 
+import br.com.alysongustavo.eventhubmanagementservice.application.user.mapper.UserMapper;
 import br.com.alysongustavo.eventhubmanagementservice.application.user.port.out.EventPublisherPort;
 import br.com.alysongustavo.eventhubmanagementservice.application.user.port.out.IamPort;
 import br.com.alysongustavo.eventhubmanagementservice.application.user.port.out.UserRepositoryPort;
-import br.com.alysongustavo.eventhubmanagementservice.domain.event.port.outbound.EventRepositoryPort;
 import br.com.alysongustavo.eventhubmanagementservice.domain.event.service.EventCapacityCheckerService;
 import br.com.alysongustavo.eventhubmanagementservice.domain.ticketpurchase.port.outbound.TicketRepositoryPort;
 import org.junit.jupiter.api.DisplayName;
@@ -26,6 +26,12 @@ public class DomainBeansConfigTest {
 
     @MockitoBean
     private IamPort iamPort;
+
+    @MockitoBean
+    private UserMapper userMapper;
+
+    @MockitoBean
+    private TicketRepositoryPort ticketRepositoryPort;
 
     @Autowired
     private ApplicationContext context;

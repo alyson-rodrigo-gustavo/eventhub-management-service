@@ -8,4 +8,5 @@ public interface TicketRepositoryPort {
     long countByEventId(Long eventId);
     Ticket save(Ticket ticket);
     List<Ticket> findByUserId(Long userId);
+    List<Ticket> findByUserEmail(String email);
 }
