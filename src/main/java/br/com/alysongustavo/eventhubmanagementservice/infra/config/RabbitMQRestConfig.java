@@ -17,8 +17,12 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQRestConfig {
 
     public static final String EVENTS_EXCHANGE = "events-exchange";
+
     public static final String USER_REGISTERED_QUEUE = "user.registered.queue";
     public static final String USER_REGISTERED_ROUTING_KEY = "user.registered";
+
+    public static final String TICKET_PURCHASE_QUEUE = "ticket.purchase.queue";
+    public static final String TICKET_PURCHASE_ROUTING_KEY = "ticket.purchase";
 
     @Bean
     public TopicExchange eventsExchange() {
@@ -35,6 +39,18 @@ public class RabbitMQRestConfig {
         return BindingBuilder.bind(userRegisteredQueue)
                 .to(eventsExchange)
                 .with(USER_REGISTERED_ROUTING_KEY);
+    }
+
+    @Bean
+    public Queue ticketPurchaseQueue() {
+        return new Queue(TICKET_PURCHASE_QUEUE, true);
+    }
+
+    @Bean
+    public Binding ticketPurchaseBinding(Queue ticketPurchaseQueue, TopicExchange eventsExchange) {
+        return BindingBuilder.bind(ticketPurchaseQueue)
+                .to(eventsExchange)
+                .with(TICKET_PURCHASE_ROUTING_KEY);
     }
 
     @Bean
