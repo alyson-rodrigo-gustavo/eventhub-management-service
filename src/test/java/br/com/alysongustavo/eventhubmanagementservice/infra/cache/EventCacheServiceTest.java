@@ -19,7 +19,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class PolicyTypeCacheServiceTest {
+public class EventCacheServiceTest {
 
     @Mock
     private EventJpaRepository repository;
