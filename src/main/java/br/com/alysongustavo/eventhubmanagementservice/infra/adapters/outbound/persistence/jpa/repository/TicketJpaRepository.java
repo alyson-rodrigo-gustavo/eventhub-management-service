@@ -10,4 +10,6 @@ public interface TicketJpaRepository extends JpaRepository<TicketEntity, Long> {
     long countByEventId(Long eventId);
 
     List<TicketEntity> findByUserId(Long userId);
+
+    List<TicketEntity> findByUserEmail(String email);
 }
