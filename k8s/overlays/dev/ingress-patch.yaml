@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: eventhub-management-ingress
+  annotations:
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:123456789:certificate/YOUR-DEV-KEY
+spec:
+  rules:
+    - host: api-dev.eventhub.cloud
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: eventhub-management-service-dev
+                port:
+                  number: 80

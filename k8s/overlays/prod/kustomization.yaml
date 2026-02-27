@@ -1,0 +1,23 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../base
+
+nameSuffix: -prod
+
+patches:
+  - target:
+      kind: Deployment
+      name: eventhub-management-service
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 5
+      - op: replace
+        path: /spec/template/spec/containers/0/resources/limits/cpu
+        value: "1000m"
+
+images:
+  - name: alysongustavo/eventhub-management-service
+    newTag: stable

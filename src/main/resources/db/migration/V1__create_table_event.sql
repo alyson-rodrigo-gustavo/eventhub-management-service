@@ -1,0 +1,20 @@
+CREATE SEQUENCE IF NOT EXISTS event_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+CREATE TABLE IF NOT EXISTS event (
+     id BIGINT PRIMARY KEY DEFAULT NEXTVAL('event_seq'),
+     name VARCHAR(255) NOT NULL,
+     date DATE NOT NULL,
+     location VARCHAR(255) NOT NULL,
+     capacity INTEGER NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_event_name
+    ON event(name);
+
+CREATE UNIQUE INDEX IF NOT EXISTS uq_event_name
+    ON event(name);
